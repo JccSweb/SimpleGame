@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "../../resources/typedefinitions.hxx"
+#include "../../resources/types/basic/type-definitions.hxx"
 
 namespace Ui
 {

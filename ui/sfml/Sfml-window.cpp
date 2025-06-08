@@ -1,6 +1,7 @@
 #include "Sfml-window.hxx"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "objects-interface.hxx"
 
 namespace Ui
 {
@@ -24,6 +25,9 @@ namespace Ui
             sf::CircleShape shape(100.f);
             shape.setFillColor(sf::Color::Green);
 
+            auto constructor = Ui::Shapes::ShapeConstrutor();
+            auto newShape = constructor.GetInstance(Ui::Shapes::Circle);
+
             sf::Texture texture;
             if (!texture.loadFromFile("img.png", sf::IntRect({10, 10}, {200, 200})))
             {
@@ -41,9 +45,10 @@ namespace Ui
                         this->window->close();
                     }
                 }
-
+                std::cout << "teste" << std::endl;
                 this->window->clear();
                 this->window->draw(sprite);
+                this->Draw(newShape);
                 this->window->draw(shape);
                 this->window->display();
             }
@@ -57,6 +62,11 @@ namespace Ui
         SfmlWindow::~SfmlWindow()
         {
             // destrutor
+        }
+
+        void SfmlWindow::Draw(std::shared_ptr<Shapes::IBaseShape> imageShape)
+        {
+            this->window->draw(*imageShape->GetShape());
         }
     }
 }

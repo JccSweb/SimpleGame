@@ -12,6 +12,9 @@
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "./ui/interface/*.cpp",
                 "./ui/sfml/*.cpp",
+                "./ui/sfml/Objects/*.cpp",
+                "./resources/types/basic/*",
+                "./resources/types/enums/*",
                 "-lsfml-graphics",
                 "-lsfml-window",
                 "-lsfml-system"

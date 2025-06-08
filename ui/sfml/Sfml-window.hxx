@@ -4,6 +4,7 @@
 #include <mutex>
 #include <SFML/Graphics.hpp>
 #include "../interface/abstract-window.hxx"
+#include "objects-interface.hxx"
 
 namespace Ui
 {
@@ -24,6 +25,7 @@ namespace Ui
             static std::mutex mMutex;
             static std::shared_ptr<SfmlWindow> mInstance;
             std::unique_ptr<sf::RenderWindow> window;
+            void Draw(std::shared_ptr<Shapes::IBaseShape> imageShape);
         };
     }
 }
