@@ -2,19 +2,21 @@
 
 namespace Ui
 {
-    namespace Shapes
+    namespace Components
     {
-        CircleObject::CircleObject()
+        CircleComponent::CircleComponent()
         {
-            this->shape = std::make_shared<sf::CircleShape>();
+            this->mShape = std::make_shared<sf::CircleShape>(100.f);
+            this->mShape->setFillColor(sf::Color::Green);
+            this->mShape->setPosition(100, 100);
         };
-        CircleObject::~CircleObject() {
+        CircleComponent::~CircleComponent() {
 
         };
 
-        std::shared_ptr<sf::Drawable> CircleObject::GetShape()
+        std::shared_ptr<sf::Shape> CircleComponent::GetElement()
         {
-            return this->shape;
+            return this->mShape;
         }
     }
 }

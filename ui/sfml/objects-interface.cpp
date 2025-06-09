@@ -4,24 +4,24 @@
 
 namespace Ui
 {
-    namespace Shapes
+    namespace Components
     {
-        IBaseShape::IBaseShape()
+        IBaseComponent::IBaseComponent()
         {
 
         }
-        IBaseShape::~IBaseShape()
+        IBaseComponent::~IBaseComponent()
         {
 
         }
-        
-        std::shared_ptr<IBaseShape> ShapeConstrutor::GetInstance(shapesEnum value)
+
+        std::shared_ptr<IBaseComponent> ComponentConstrutor::GetInstance(shapesEnum value)
         {
             if(value == shapesEnum::Circle)
             {
-                return std::make_shared<CircleObject>();
+                return std::make_shared<CircleComponent>();
             }
-            return std::make_shared<CircleObject>();
+            return std::make_shared<CircleComponent>();
         }
     }
 }

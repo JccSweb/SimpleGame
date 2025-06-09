@@ -2,7 +2,7 @@
 
 namespace Ui
 {
-    namespace Shapes
+    namespace Components
     {
         enum shapesEnum
         {

@@ -5,26 +5,20 @@
 
 namespace Ui
 {
-    namespace Shapes
+    namespace Components
     {
-        class IBaseShape 
+        class IBaseComponent 
         {
             public:
-            IBaseShape();
-            ~IBaseShape();
-            virtual std::shared_ptr<sf::Drawable> GetShape() = 0;
+            IBaseComponent();
+            ~IBaseComponent();
+            virtual std::shared_ptr<sf::Shape> GetElement() = 0;
         };
 
-/*         class SpriteObject : public sf::Sprite, IBaseShape
-        {
-            SpriteObject();
-            ~SpriteObject()
-        }; */
-
-        class ShapeConstrutor 
+        class ComponentConstrutor 
         {
             public:
-            static std::shared_ptr<IBaseShape> GetInstance(shapesEnum value);
+                static std::shared_ptr<IBaseComponent> GetInstance(shapesEnum value);
         };
     }
 }

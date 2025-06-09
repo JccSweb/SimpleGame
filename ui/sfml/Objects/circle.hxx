@@ -2,17 +2,18 @@
 
 namespace Ui
 {
-    namespace Shapes
+    namespace Components
     {
-        class CircleObject : public sf::CircleShape, public IBaseShape
+        class CircleComponent : public IBaseComponent
         {
         public:
-            CircleObject();
-            ~CircleObject();
-            std::shared_ptr<sf::Drawable> GetShape() override;
+            CircleComponent();
+            ~CircleComponent();
+            std::shared_ptr<sf::Shape> GetElement();
 
         private:
-            std::shared_ptr<sf::Drawable> shape;
+            std::shared_ptr<sf::Shape> mShape;
+
         };
     }
 }

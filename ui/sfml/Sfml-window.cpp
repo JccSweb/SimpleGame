@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include "objects-interface.hxx"
 
+int SPEED = 5;
+
 namespace Ui
 {
     namespace V1
@@ -22,34 +24,14 @@ namespace Ui
 
         void SfmlWindow::Render()
         {
-            sf::CircleShape shape(100.f);
-            shape.setFillColor(sf::Color::Green);
-
-            auto constructor = Ui::Shapes::ShapeConstrutor();
-            auto newShape = constructor.GetInstance(Ui::Shapes::Circle);
-
-            sf::Texture texture;
-            if (!texture.loadFromFile("img.png", sf::IntRect({10, 10}, {200, 200})))
-            {
-                std::cout << "Couldn't load image" << std::endl;
-            }
-            sf::Sprite sprite(texture);
+            // shape.setRotation(90.f);
+            //auto newShape = constructor.GetInstance(Ui::Components::Circle);
 
             while (this->window->isOpen())
             {
-                sf::Event event;
-                while (bool value = this->window->pollEvent(event))
-                {
-                    if (event.type == sf::Event::Closed)
-                    {
-                        this->window->close();
-                    }
-                }
-                std::cout << "teste" << std::endl;
+                this->ProcessEvents();
                 this->window->clear();
-                this->window->draw(sprite);
-                this->Draw(newShape);
-                this->window->draw(shape);
+                this->Draw(this->mNewShape);
                 this->window->display();
             }
         }
@@ -57,6 +39,7 @@ namespace Ui
         SfmlWindow::SfmlWindow(Widht width, Height height)
         {
             this->window = std::make_unique<sf::RenderWindow>(sf::VideoMode({width, height}), "Hello World");
+            this->mNewShape = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
         }
 
         SfmlWindow::~SfmlWindow()
@@ -64,9 +47,57 @@ namespace Ui
             // destrutor
         }
 
-        void SfmlWindow::Draw(std::shared_ptr<Shapes::IBaseShape> imageShape)
+        void SfmlWindow::Draw(std::shared_ptr<Components::IBaseComponent> imageShape)
         {
-            this->window->draw(*imageShape->GetShape());
+            this->window->draw(*imageShape->GetElement());
+        }
+
+        void SfmlWindow::ProcessEvents()
+        {
+            //Should be sent to a parser and then to a 
+            sf::Event event;
+            sf::Keyboard eventKeyboard;
+            while (bool value = this->window->pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                {
+                    std::cout << "Closed!" << std::endl;
+                    this->window->close();
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                {
+                    std::cout << "Left!" << std::endl;
+                    this->mNewShape->GetElement()->move(-SPEED, 0);
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                {
+                    std::cout << "Right!" << std::endl;
+                    this->mNewShape->GetElement()->move(SPEED, 0);
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                {
+                    std::cout << "Up!" << std::endl;
+                    this->mNewShape->GetElement()->move(0, -SPEED);
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                {
+                    std::cout << "Down!" << std::endl;
+                    this->mNewShape->GetElement()->move(0, SPEED);
+                }
+                if (event.type == sf::Event::Closed)
+                {
+                    this->window->close();
+                }
+            }
         }
     }
 }
+
+
+            /*             sf::Texture texture;
+                        if (!texture.loadFromFile("img.png", sf::IntRect({10, 10}, {200, 200})))
+                        {
+                            std::cout << "Couldn't load image" << std::endl;
+                        }
+                        sf::Sprite sprite(texture);
+             */

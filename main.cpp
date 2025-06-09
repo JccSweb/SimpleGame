@@ -5,6 +5,6 @@
 int main()
 {
     auto factory = Ui::WindowFactory();
-    std::shared_ptr<Ui::IAbstractWindow> ui = factory.GetUi(800, 1000);
+    std::shared_ptr<Ui::IAbstractWindow> ui = factory.GetUi(800, 800);
     ui->Render();
 }
