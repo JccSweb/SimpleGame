@@ -6,6 +6,7 @@ namespace Ui
 {
     IAbstractWindow::IAbstractWindow()
     {
+        this->mGameController = Game::GameController::GetInstance();
     }
     IAbstractWindow::~IAbstractWindow()
     {

@@ -24,9 +24,6 @@ namespace Ui
 
         void SfmlWindow::Render()
         {
-            // shape.setRotation(90.f);
-            //auto newShape = constructor.GetInstance(Ui::Components::Circle);
-
             while (this->window->isOpen())
             {
                 this->ProcessEvents();
@@ -40,6 +37,7 @@ namespace Ui
         {
             this->window = std::make_unique<sf::RenderWindow>(sf::VideoMode({width, height}), "Hello World");
             this->mNewShape = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
+
         }
 
         SfmlWindow::~SfmlWindow()
@@ -52,6 +50,10 @@ namespace Ui
             this->window->draw(*imageShape->GetElement());
         }
 
+        void SfmlWindow::GetEvents()
+        {
+
+        }
         void SfmlWindow::ProcessEvents()
         {
             //Should be sent to a parser and then to a 
@@ -63,6 +65,7 @@ namespace Ui
                 {
                     std::cout << "Closed!" << std::endl;
                     this->window->close();
+                    this->mGameController->SetStatus(false);
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
                 {

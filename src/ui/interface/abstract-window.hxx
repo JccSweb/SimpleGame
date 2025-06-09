@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
-#include "../../resources/types/basic/type-definitions.hxx"
+#include "../../types/basic/type-definitions.hxx"
+#include "../../game-core/game-core.hxx"
 
 namespace Ui
 {
@@ -12,6 +13,7 @@ namespace Ui
 
     protected:
         IAbstractWindow();
+        std::shared_ptr<Game::GameController> mGameController;
     };
 
     class WindowFactory

@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <SFML/Graphics.hpp>
-#include "../../resources/types/enums/objects-enum.hxx"
+#include "../../types/enums/objects-enum.hxx"
 
 namespace Ui
 {
@@ -12,7 +12,9 @@ namespace Ui
             public:
             IBaseComponent();
             ~IBaseComponent();
-            virtual std::shared_ptr<sf::Shape> GetElement() = 0;
+            std::shared_ptr<sf::Shape> GetElement();
+            protected:
+            std::shared_ptr<sf::Shape> mShape;
         };
 
         class ComponentConstrutor 

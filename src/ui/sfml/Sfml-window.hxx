@@ -19,6 +19,7 @@ namespace Ui
             static std::shared_ptr<SfmlWindow> GetInstance(Widht width, Height height);
             virtual void Render() override;
             ~SfmlWindow();
+            void GetEvents();
 
         protected:
             SfmlWindow(Widht width, Height height);

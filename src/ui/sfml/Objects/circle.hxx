@@ -9,11 +9,6 @@ namespace Ui
         public:
             CircleComponent();
             ~CircleComponent();
-            std::shared_ptr<sf::Shape> GetElement();
-
-        private:
-            std::shared_ptr<sf::Shape> mShape;
-
         };
     }
 }

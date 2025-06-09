@@ -13,8 +13,9 @@
                 "./ui/interface/*.cpp",
                 "./ui/sfml/*.cpp",
                 "./ui/sfml/Objects/*.cpp",
-                "./resources/types/basic/*",
-                "./resources/types/enums/*",
+                "./types/basic/*",
+                "./types/enums/*",
+                "./game-core/*.cpp",
                 "-lsfml-graphics",
                 "-lsfml-window",
                 "-lsfml-system"
