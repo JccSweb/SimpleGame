@@ -1,4 +1,6 @@
-#include "../objects-interface.hxx"
+#pragma once
+
+#include "ui/sfml/objects-interface.hxx"
 
 namespace Ui
 {
@@ -8,7 +10,6 @@ namespace Ui
         {
         public:
             TextureComponent();
-            ~TextureComponent();
         };
     }
 }

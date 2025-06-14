@@ -10,12 +10,25 @@
                 "*.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
+
+
+
                 "./ui/interface/*.cpp",
                 "./ui/sfml/*.cpp",
-                "./ui/sfml/Objects/*.cpp",
+                "./ui/sfml/objects/*.cpp",
                 "./types/basic/*",
                 "./types/enums/*",
+
                 "./game-core/*.cpp",
+                "./game-core/command/receiver/*.cpp",
+                "./game-core/command/command-interface/*.cpp",
+
+                "./game-core/game-elements/base-game-elements-interface/*.cpp",
+                "./game-core/game-elements/characters/*.cpp",
+                "./game-core/game-elements/characters/characters-interface/*.cpp",
+                "./game-core/game-elements/objects/objects-interface/*.cpp",                
+                
+                "-I./",
                 "-lsfml-graphics",
                 "-lsfml-window",
                 "-lsfml-system"

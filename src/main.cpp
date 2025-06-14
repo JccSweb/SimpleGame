@@ -15,7 +15,7 @@ int main()
 {
     std::thread gameWorker(StartGame);
     auto factory = Ui::WindowFactory();
-    std::shared_ptr<Ui::IAbstractWindow> ui = factory.GetUi(800, 800);
+    std::shared_ptr<Ui::IAbstractWindow> ui = factory.GetUi();
     try
     {
         ui->Render();
@@ -27,4 +27,5 @@ int main()
     
     gameWorker.join();
     std::cout << "Finished!!\n";
+    return 0;
 }

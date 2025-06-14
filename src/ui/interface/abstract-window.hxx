@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
-#include "../../types/basic/type-definitions.hxx"
-#include "../../game-core/game-core.hxx"
+#include "types/basic/type-definitions.hxx"
+#include "game-core/game-core.hxx"
 
 namespace Ui
 {
@@ -9,7 +9,6 @@ namespace Ui
     {
     public:
         virtual void Render() = 0;
-        ~IAbstractWindow();
 
     protected:
         IAbstractWindow();
@@ -19,6 +18,6 @@ namespace Ui
     class WindowFactory
     {
     public:
-        static std::shared_ptr<IAbstractWindow> GetUi(Widht width, Height height);
+        static std::shared_ptr<IAbstractWindow> GetUi();
     };
 }

@@ -12,37 +12,43 @@ namespace Ui
         std::mutex SfmlWindow::mMutex;
         std::shared_ptr<SfmlWindow> SfmlWindow::mInstance = nullptr;
 
-        std::shared_ptr<SfmlWindow> SfmlWindow::GetInstance(unsigned int width, unsigned int height)
+        std::shared_ptr<SfmlWindow> SfmlWindow::GetInstance()
         {
             std::lock_guard<std::mutex> lock(mMutex);
             if (mInstance == nullptr)
             {
-                mInstance = std::shared_ptr<SfmlWindow>(new SfmlWindow(width, height));
+                mInstance = std::shared_ptr<SfmlWindow>(new SfmlWindow());
             }
             return mInstance;
         }
 
         void SfmlWindow::Render()
         {
+            Widht widht = 800;
+            Height height = 800;
+            std::string title = "Hello World";
+            this->window = std::make_unique<sf::RenderWindow>(sf::VideoMode({widht, height}), title);
+            std::shared_ptr<Game::UiSubject> subject = Game::UiSubject::GetInstance();
+            // auto circle = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
+
+            // this->mShapes.push_back(circle);
             while (this->window->isOpen())
             {
-                this->ProcessEvents();
+                this->ProcessEvents(subject);
+                // this->ProccessCommands(); Responsable for moving, fight, etc.
                 this->window->clear();
-                this->Draw(this->mNewShape);
+                /*   for (auto shape : this->mShapes)
+                  {
+                      this->Draw(shape);
+                  }
+                */
                 this->window->display();
             }
+            // this->mShapes.remove(circle);
         }
 
-        SfmlWindow::SfmlWindow(Widht width, Height height)
+        SfmlWindow::SfmlWindow()
         {
-            this->window = std::make_unique<sf::RenderWindow>(sf::VideoMode({width, height}), "Hello World");
-            this->mNewShape = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
-
-        }
-
-        SfmlWindow::~SfmlWindow()
-        {
-            // destrutor
         }
 
         void SfmlWindow::Draw(std::shared_ptr<Components::IBaseComponent> imageShape)
@@ -52,13 +58,11 @@ namespace Ui
 
         void SfmlWindow::GetEvents()
         {
-
         }
-        void SfmlWindow::ProcessEvents()
+        void SfmlWindow::ProcessEvents(std::shared_ptr<Game::UiSubject> subject)
         {
-            //Should be sent to a parser and then to a 
+            // Should be sent to a parser and then to a
             sf::Event event;
-            sf::Keyboard eventKeyboard;
             while (bool value = this->window->pollEvent(event))
             {
                 if (event.type == sf::Event::Closed)
@@ -69,38 +73,41 @@ namespace Ui
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
                 {
-                    std::cout << "Left!" << std::endl;
-                    this->mNewShape->GetElement()->move(-SPEED, 0);
+                    PlayerEvent event;
+                    event.keypressed = "Teste";
+                    event.type = PlayerEventType::keyboard;
+                    subject->Notify(event);
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
                 {
-                    std::cout << "Right!" << std::endl;
-                    this->mNewShape->GetElement()->move(SPEED, 0);
+                    PlayerEvent event;
+                    event.keypressed = "Teste";
+                    event.type = PlayerEventType::keyboard;
+                    subject->Notify(event);
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
                 {
-                    std::cout << "Up!" << std::endl;
-                    this->mNewShape->GetElement()->move(0, -SPEED);
+                    PlayerEvent event;
+                    event.keypressed = "Teste";
+                    event.type = PlayerEventType::keyboard;
+                    subject->Notify(event);
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                 {
-                    std::cout << "Down!" << std::endl;
-                    this->mNewShape->GetElement()->move(0, SPEED);
-                }
-                if (event.type == sf::Event::Closed)
-                {
-                    this->window->close();
+                    PlayerEvent event;
+                    event.keypressed = "Teste";
+                    event.type = PlayerEventType::keyboard;
+                    subject->Notify(event);
                 }
             }
         }
     }
 }
 
-
-            /*             sf::Texture texture;
-                        if (!texture.loadFromFile("img.png", sf::IntRect({10, 10}, {200, 200})))
-                        {
-                            std::cout << "Couldn't load image" << std::endl;
-                        }
-                        sf::Sprite sprite(texture);
-             */
+/*             sf::Texture texture;
+            if (!texture.loadFromFile("img.png", sf::IntRect({10, 10}, {200, 200})))
+            {
+                std::cout << "Couldn't load image" << std::endl;
+            }
+            sf::Sprite sprite(texture);
+ */

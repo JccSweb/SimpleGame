@@ -1,26 +1,27 @@
 #pragma once
 #include <memory>
 #include <SFML/Graphics.hpp>
-#include "../../types/enums/objects-enum.hxx"
+
+#include "types/enums/objects-enum.hxx"
 
 namespace Ui
 {
     namespace Components
     {
-        class IBaseComponent 
+        class IBaseComponent
         {
-            public:
+        public:
             IBaseComponent();
-            ~IBaseComponent();
             std::shared_ptr<sf::Shape> GetElement();
-            protected:
+
+        protected:
             std::shared_ptr<sf::Shape> mShape;
         };
 
-        class ComponentConstrutor 
+        class ComponentConstrutor
         {
-            public:
-                static std::shared_ptr<IBaseComponent> GetInstance(shapesEnum value);
+        public:
+            static std::shared_ptr<IBaseComponent> GetInstance(shapesEnum value);
         };
     }
 }

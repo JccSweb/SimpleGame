@@ -8,8 +8,5 @@ namespace Ui
         {
 
         };
-        TextureComponent::~TextureComponent() {
-
-        };
     }
 }

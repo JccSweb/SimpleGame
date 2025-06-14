@@ -1,16 +1,12 @@
 #include <memory>
 #include "objects-interface.hxx"
-#include "Objects/circle.hxx"
+#include "ui/sfml/objects/circle.hxx"
 
 namespace Ui
 {
     namespace Components
     {
         IBaseComponent::IBaseComponent()
-        {
-
-        }
-        IBaseComponent::~IBaseComponent()
         {
 
         }

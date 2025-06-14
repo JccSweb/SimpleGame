@@ -1,5 +1,5 @@
 #include "abstract-window.hxx"
-#include "../sfml/Sfml-window.hxx"
+#include "ui/sfml/Sfml-window.hxx"
 
 
 namespace Ui
@@ -8,12 +8,8 @@ namespace Ui
     {
         this->mGameController = Game::GameController::GetInstance();
     }
-    IAbstractWindow::~IAbstractWindow()
+    std::shared_ptr<IAbstractWindow> WindowFactory::GetUi()
     {
-    }
-
-    std::shared_ptr<IAbstractWindow> WindowFactory::GetUi(Widht width, Height height)
-    {
-        return V1::SfmlWindow::GetInstance(width, height);
+        return V1::SfmlWindow::GetInstance();
     }
 }

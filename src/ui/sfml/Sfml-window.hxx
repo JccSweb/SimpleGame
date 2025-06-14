@@ -3,35 +3,35 @@
 #include <memory>
 #include <mutex>
 #include <SFML/Graphics.hpp>
-#include "../interface/abstract-window.hxx"
+#include "ui/interface/abstract-window.hxx"
 #include "objects-interface.hxx"
 #include "Sfml-window.hxx"
+#include "game-core/game-observer.hxx"
 
 
 namespace Ui
 {
     namespace V1
     {
-
         class SfmlWindow : public IAbstractWindow
         {
         public:
-            static std::shared_ptr<SfmlWindow> GetInstance(Widht width, Height height);
-            virtual void Render() override;
-            ~SfmlWindow();
+            static std::shared_ptr<SfmlWindow> GetInstance();
             void GetEvents();
+            virtual void Render() override;
 
         protected:
-            SfmlWindow(Widht width, Height height);
-
+            SfmlWindow();
 
         private:
             static std::mutex mMutex;
             static std::shared_ptr<SfmlWindow> mInstance;
             std::unique_ptr<sf::RenderWindow> window;
+            std::map<std::string, std::shared_ptr<Ui::Components::IBaseComponent>> objects;
+
             void Draw(std::shared_ptr<Components::IBaseComponent> imageShape);
-            void ProcessEvents();
-            std::shared_ptr<Ui::Components::IBaseComponent> mNewShape;
+            void ProcessEvents(std::shared_ptr<Game::UiSubject> subject);
+           
         };
     }
 }

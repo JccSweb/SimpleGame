@@ -1,5 +1,5 @@
-
 #include "game-core.hxx"
+#include "game-observer.hxx"
 
 namespace Game
 {
@@ -32,13 +32,26 @@ namespace Game
     GameCore::GameCore()
     {
         this->mGameController = GameController::GetInstance();
+        auto mPlayer = std::make_shared<Game::Elements::Characters::MainCharacter>();
+        this->mElements.push_back(mPlayer);
     }
 
     void GameCore::Start()
     {
+        std::shared_ptr<Game::UiSubject> subject = Game::UiSubject::GetInstance();
+        std::shared_ptr<Game::GameObserver> observer = Game::GameObserver::Create(subject);
+
         while (this->mGameController->GetStatus())
         {
-            std::cout << "thread 2" << std::endl;
+            while (observer->HasAction())
+            {
+                PlayerEvent event;
+                event = observer->GetAction();
+                for (auto elem : this->mElements)
+                {
+                    elem->mReceiveEvent(event);
+                }
+            }
         }
     }
 }
