@@ -1,5 +1,6 @@
 #include "game-core.hxx"
 #include "game-observer.hxx"
+#include "game-core/world-state/world-state.hxx"
 
 namespace Game
 {
@@ -32,14 +33,17 @@ namespace Game
     GameCore::GameCore()
     {
         this->mGameController = GameController::GetInstance();
-        auto mPlayer = std::make_shared<Game::Elements::Characters::MainCharacter>();
-        this->mElements.push_back(mPlayer);
     }
 
     void GameCore::Start()
     {
+        // auto mPlayer = std::make_shared<Game::Elements::Characters::MainCharacter>();
+        //this->mElements.push_back(mPlayer);
         std::shared_ptr<Game::UiSubject> subject = Game::UiSubject::GetInstance();
-        std::shared_ptr<Game::GameObserver> observer = Game::GameObserver::Create(subject);
+        std::shared_ptr<Game::GameObserver> observer = Game::GameObserver::Create(subject); 
+
+
+        auto worldState = World::WorldState::GetInstance();
 
         while (this->mGameController->GetStatus())
         {
@@ -47,10 +51,7 @@ namespace Game
             {
                 InputTypeEvent event;
                 event = observer->GetAction();
-                for (auto elem : this->mElements)
-                {
-                    elem->mReceiveEvent(event);
-                }
+                worldState->ReceiveEvents(event);
             }
         }
     }

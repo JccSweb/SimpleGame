@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game-core/game-elements/base-game-elements-interface/base-elements-interface.hxx"
+#include "ui/sfml/objects-interface.hxx"
 
 namespace Game
 {
@@ -12,7 +13,7 @@ namespace Game
             {
                 public:
                 ICharacters();
-                virtual void mReceiveEvent(InputTypeEvent event) = 0;
+                virtual void mReceiveEvent(InputTypeEvent event) = 0;                
             };
         }
     }

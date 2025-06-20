@@ -12,9 +12,12 @@ namespace Game
         public:
             IBaseElements();
             virtual void mReceiveEvent(InputTypeEvent event) = 0;
+            std::shared_ptr<Ui::Components::IBaseComponent> GetElementRepresentation();
+            std::string GetName();
 
-        private:
-            //std::shared_ptr<Ui::Components::IBaseComponent> mRepresentation;
+        protected:
+            std::shared_ptr<Ui::Components::IBaseComponent> mComponentRepresentation = nullptr;
+            std::string name;
         };
     }
 }

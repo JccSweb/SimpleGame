@@ -1,4 +1,4 @@
-#include "main-character.hxx"
+#include "game-core/game-elements/characters/main-character.hxx"
 
 #include <iostream>
 
@@ -10,8 +10,9 @@ namespace Game
         {
             MainCharacter::MainCharacter()
             {
-                
+                this->mComponentRepresentation = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
             }
+
             void MainCharacter::mReceiveEvent(InputTypeEvent event)
             {   
                 std::cout << "pressed" <<  std::endl;

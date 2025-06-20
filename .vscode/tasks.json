@@ -26,7 +26,9 @@
                 "./game-core/game-elements/base-game-elements-interface/*.cpp",
                 "./game-core/game-elements/characters/*.cpp",
                 "./game-core/game-elements/characters/characters-interface/*.cpp",
-                "./game-core/game-elements/objects/objects-interface/*.cpp",                
+                "./game-core/game-elements/objects/objects-interface/*.cpp",            
+                
+                "./game-core/world-state/*.cpp",         
                 
                 "-I./",
                 "-lsfml-graphics",

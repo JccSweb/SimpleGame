@@ -8,7 +8,7 @@ namespace Game
         {
             ICharacters::ICharacters()
             {
-                
+            
             }
         }
     }

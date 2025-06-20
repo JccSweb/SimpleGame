@@ -24,23 +24,17 @@ namespace Ui
 
         void SfmlWindow::Render()
         {
-            std::shared_ptr<Game::UiSubject> subject = Game::UiSubject::GetInstance();
-            // auto circle = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
-
-            // this->mShapes.push_back(circle);
             while (this->window->isOpen())
             {
                 this->ProcessEvents(subject);
-                // this->ProccessCommands(); Responsable for moving, fight, etc.
                 this->window->clear();
-                /*   for (auto shape : this->mShapes)
-                  {
-                      this->Draw(shape);
-                  }
-                */
+                auto elements = state->GetElements();
+                for (auto element : elements)
+                {
+                    this->Draw(element.second);
+                }
                 this->window->display();
             }
-            // this->mShapes.remove(circle);
         }
 
         SfmlWindow::SfmlWindow()
@@ -49,6 +43,8 @@ namespace Ui
             Height height = 800;
             std::string title = "Hello World";
             this->window = std::make_unique<sf::RenderWindow>(sf::VideoMode({widht, height}), title);
+            this->subject = Game::UiSubject::GetInstance();
+            this->state = World::WorldState::GetInstance();
         }
 
         void SfmlWindow::Draw(std::shared_ptr<Components::IBaseComponent> imageShape)
@@ -102,14 +98,11 @@ namespace Ui
             default:
                 break;
             }
+            if (event.key.shift)
+            {
+                inputEvent.shift = true;
+            }
+            return inputEvent;
         }
     }
 }
-
-/*             sf::Texture texture;
-            if (!texture.loadFromFile("img.png", sf::IntRect({10, 10}, {200, 200})))
-            {
-                std::cout << "Couldn't load image" << std::endl;
-            }
-            sf::Sprite sprite(texture);
- */
