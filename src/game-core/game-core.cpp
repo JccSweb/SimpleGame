@@ -45,7 +45,7 @@ namespace Game
         {
             while (observer->HasAction())
             {
-                PlayerEvent event;
+                InputTypeEvent event;
                 event = observer->GetAction();
                 for (auto elem : this->mElements)
                 {

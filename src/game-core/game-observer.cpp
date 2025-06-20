@@ -21,7 +21,7 @@ namespace Game
         this->list_observer_.remove(observer);
     }
 
-    void UiSubject::Notify(PlayerEvent event)
+    void UiSubject::Notify(InputTypeEvent event)
     {
         for (auto observer : this->list_observer_)
         {
@@ -45,7 +45,7 @@ namespace Game
         this->mSubject = subject;
     }
 
-    void GameObserver::Update(PlayerEvent event)
+    void GameObserver::Update(InputTypeEvent event)
     {
         std::lock_guard<std::mutex> lock(mMutex);
         this->events.push(event);
@@ -56,10 +56,10 @@ namespace Game
         return !this->events.empty();
     }
 
-    PlayerEvent GameObserver::GetAction()
+    InputTypeEvent GameObserver::GetAction()
     {
         std::lock_guard<std::mutex> lock(mMutex);
-        PlayerEvent action;
+        InputTypeEvent action;
         action = this->events.front();
         this->events.pop();
         return action;

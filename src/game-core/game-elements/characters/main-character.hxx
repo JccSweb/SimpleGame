@@ -11,7 +11,7 @@ namespace Game
             {
             public:
                 MainCharacter();
-                virtual void mReceiveEvent(PlayerEvent event);                
+                virtual void mReceiveEvent(InputTypeEvent event);                
             };
         }
     }

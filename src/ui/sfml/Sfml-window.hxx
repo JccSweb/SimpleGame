@@ -31,6 +31,7 @@ namespace Ui
 
             void Draw(std::shared_ptr<Components::IBaseComponent> imageShape);
             void ProcessEvents(std::shared_ptr<Game::UiSubject> subject);
+            InputTypeEvent ParseKeyPressedEvent(sf::Event event);
            
         };
     }

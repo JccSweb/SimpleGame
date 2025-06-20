@@ -26,6 +26,5 @@ int main()
     }
     
     gameWorker.join();
-    std::cout << "Finished!!\n";
     return 0;
 }

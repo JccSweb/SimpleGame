@@ -1,0 +1,26 @@
+#pragma once
+#include <string>
+
+enum EventInputTypeEnum
+{
+    mouse,
+    keyboard
+};
+
+enum EventKeyboardTypeEnum
+{
+    Right,
+    Left,
+    Up,
+    Down
+};
+
+struct InputTypeEvent
+{
+    EventInputTypeEnum type;
+    EventKeyboardTypeEnum keypressed;
+    bool alt = false;
+    bool control = false;
+    bool shift = false;
+    bool system = false;
+};

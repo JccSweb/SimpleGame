@@ -12,9 +12,9 @@ namespace Game
             {
                 
             }
-            void MainCharacter::mReceiveEvent(PlayerEvent event)
+            void MainCharacter::mReceiveEvent(InputTypeEvent event)
             {   
-                std::cout << event.keypressed <<  std::endl;
+                std::cout << "pressed" <<  std::endl;
             }
         }
     }

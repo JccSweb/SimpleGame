@@ -12,7 +12,7 @@ namespace Game
             {
                 public:
                 ICharacters();
-                virtual void mReceiveEvent(PlayerEvent event) = 0;
+                virtual void mReceiveEvent(InputTypeEvent event) = 0;
             };
         }
     }

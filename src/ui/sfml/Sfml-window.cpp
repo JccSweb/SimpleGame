@@ -61,44 +61,46 @@ namespace Ui
         }
         void SfmlWindow::ProcessEvents(std::shared_ptr<Game::UiSubject> subject)
         {
-            // Should be sent to a parser and then to a
             sf::Event event;
             while (bool value = this->window->pollEvent(event))
             {
                 if (event.type == sf::Event::Closed)
                 {
-                    std::cout << "Closed!" << std::endl;
                     this->window->close();
                     this->mGameController->SetStatus(false);
                 }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+
+                if (event.type == sf::Event::KeyPressed)
                 {
-                    PlayerEvent event;
-                    event.keypressed = "Teste";
-                    event.type = PlayerEventType::keyboard;
-                    subject->Notify(event);
+                    InputTypeEvent pEvent = this->ParseKeyPressedEvent(event);
+                    subject->Notify(pEvent);
                 }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-                {
-                    PlayerEvent event;
-                    event.keypressed = "Teste";
-                    event.type = PlayerEventType::keyboard;
-                    subject->Notify(event);
-                }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                {
-                    PlayerEvent event;
-                    event.keypressed = "Teste";
-                    event.type = PlayerEventType::keyboard;
-                    subject->Notify(event);
-                }
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-                {
-                    PlayerEvent event;
-                    event.keypressed = "Teste";
-                    event.type = PlayerEventType::keyboard;
-                    subject->Notify(event);
-                }
+            }
+        }
+
+        InputTypeEvent SfmlWindow::ParseKeyPressedEvent(sf::Event event)
+        {
+            InputTypeEvent inputEvent;
+            switch (event.key.code)
+            {
+            case sf::Keyboard::Left:
+                inputEvent.keypressed = EventKeyboardTypeEnum::Left;
+                inputEvent.type = EventInputTypeEnum::keyboard;
+                break;
+            case sf::Keyboard::Right:
+                inputEvent.keypressed = EventKeyboardTypeEnum::Right;
+                inputEvent.type = EventInputTypeEnum::keyboard;
+                break;
+            case sf::Keyboard::Up:
+                inputEvent.keypressed = EventKeyboardTypeEnum::Up;
+                inputEvent.type = EventInputTypeEnum::keyboard;
+                break;
+            case sf::Keyboard::Down:
+                inputEvent.keypressed = EventKeyboardTypeEnum::Down;
+                inputEvent.type = EventInputTypeEnum::keyboard;
+                break;
+            default:
+                break;
             }
         }
     }

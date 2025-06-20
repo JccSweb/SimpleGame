@@ -4,14 +4,14 @@
 #include <mutex>
 #include<bits/stdc++.h>
 
-#include "types/basic/player-events.hxx"
+#include "types/basic/input-events.hxx"
 
 namespace Game
 {
     class IGameObserver
     {
     public:
-        virtual void Update(PlayerEvent event) = 0;
+        virtual void Update(InputTypeEvent event) = 0;
     };
 
     class IUiSubject
@@ -20,7 +20,7 @@ namespace Game
         virtual void Attach(std::shared_ptr<IGameObserver> observer) = 0;
         virtual void Detach(std::shared_ptr<IGameObserver> observer) = 0;
         // Struct or something to be passed, should garantee decoupling
-        virtual void Notify(PlayerEvent event) = 0;
+        virtual void Notify(InputTypeEvent event) = 0;
     };
 
     class UiSubject : public IUiSubject
@@ -29,7 +29,7 @@ namespace Game
         static std::shared_ptr<UiSubject> GetInstance();
         void Attach(std::shared_ptr<IGameObserver> observer);
         void Detach(std::shared_ptr<IGameObserver> observer);
-        void Notify(PlayerEvent event);
+        void Notify(InputTypeEvent event);
 
     protected:
         UiSubject();
@@ -48,8 +48,8 @@ namespace Game
         };
 
     public:
-        void Update(PlayerEvent event);
-        PlayerEvent GetAction();
+        void Update(InputTypeEvent event);
+        InputTypeEvent GetAction();
         bool HasAction();
         void RemoveMeFromTheList();
         GameObserver(std::shared_ptr<IUiSubject> subject, Private); 
@@ -59,7 +59,7 @@ namespace Game
         std::shared_ptr<GameObserver> getptr();
        
     private:
-        std::queue<PlayerEvent> events;
+        std::queue<InputTypeEvent> events;
         static std::mutex mMutex;
         std::shared_ptr<IUiSubject> mSubject;
     };

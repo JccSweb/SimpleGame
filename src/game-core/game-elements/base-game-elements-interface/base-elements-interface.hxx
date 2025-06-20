@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ui/sfml/objects-interface.hxx"
-#include "types/basic/player-events.hxx"
+#include "types/basic/input-events.hxx"
 
 namespace Game
 {
@@ -11,7 +11,7 @@ namespace Game
         {
         public:
             IBaseElements();
-            virtual void mReceiveEvent(PlayerEvent event) = 0;
+            virtual void mReceiveEvent(InputTypeEvent event) = 0;
 
         private:
             //std::shared_ptr<Ui::Components::IBaseComponent> mRepresentation;
