@@ -8,6 +8,7 @@ namespace Game
     UiSubject::UiSubject()
     {
     }
+    
     void UiSubject::Attach(std::shared_ptr<IGameObserver> observer)
     {
         std::lock_guard<std::mutex> lock(mMutex);

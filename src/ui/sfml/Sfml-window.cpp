@@ -24,10 +24,6 @@ namespace Ui
 
         void SfmlWindow::Render()
         {
-            Widht widht = 800;
-            Height height = 800;
-            std::string title = "Hello World";
-            this->window = std::make_unique<sf::RenderWindow>(sf::VideoMode({widht, height}), title);
             std::shared_ptr<Game::UiSubject> subject = Game::UiSubject::GetInstance();
             // auto circle = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
 
@@ -49,6 +45,10 @@ namespace Ui
 
         SfmlWindow::SfmlWindow()
         {
+            Widht widht = 800;
+            Height height = 800;
+            std::string title = "Hello World";
+            this->window = std::make_unique<sf::RenderWindow>(sf::VideoMode({widht, height}), title);
         }
 
         void SfmlWindow::Draw(std::shared_ptr<Components::IBaseComponent> imageShape)
