@@ -37,20 +37,15 @@ namespace Game
 
     void GameCore::Start()
     {
-        // auto mPlayer = std::make_shared<Game::Elements::Characters::MainCharacter>();
-        //this->mElements.push_back(mPlayer);
         std::shared_ptr<Game::UiSubject> subject = Game::UiSubject::GetInstance();
         std::shared_ptr<Game::GameObserver> observer = Game::GameObserver::Create(subject); 
-
-
         auto worldState = World::WorldState::GetInstance();
 
         while (this->mGameController->GetStatus())
         {
             while (observer->HasAction())
             {
-                InputTypeEvent event;
-                event = observer->GetAction();
+                InputTypeEvent event = observer->GetAction();
                 worldState->ReceiveEvents(event);
             }
         }

@@ -28,6 +28,5 @@ namespace Game
     private:
         std::shared_ptr<GameController>  mGameController;
         std::list<std::shared_ptr<Game::Elements::IBaseElements>> mElements;
-        //std::shared_ptr<Game::Elements::Characters::MainCharacter> mPlayer;
     };
 }
