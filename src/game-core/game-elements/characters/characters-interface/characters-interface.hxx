@@ -13,7 +13,6 @@ namespace Game
             {
                 public:
                 ICharacters();
-                virtual void mReceiveEvent(InputTypeEvent event) = 0;                
             };
         }
     }

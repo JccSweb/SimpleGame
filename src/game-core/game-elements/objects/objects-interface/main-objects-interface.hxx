@@ -13,9 +13,7 @@ namespace Game
             {
                 public:
                 IObjects();
-                
-                private:
-                virtual void mReceiveEvent(InputTypeEvent event) = 0;
+
             };
         }
     }

@@ -12,11 +12,6 @@ namespace Game
             {
                 this->mComponentRepresentation = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
             }
-
-            void MainCharacter::mReceiveEvent(InputTypeEvent event)
-            {   
-                std::cout << "pressed" <<  std::endl;
-            }
         }
     }
 }
