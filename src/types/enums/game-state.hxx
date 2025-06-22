@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_STATE_HXX
+#define GAME_STATE_HXX
 
 namespace Game
 {
@@ -8,3 +9,5 @@ namespace Game
         Shutdonw
     };
 }
+
+#endif
