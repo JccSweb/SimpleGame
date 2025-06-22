@@ -16,6 +16,7 @@
                 "./ui/interface/*.cpp",
                 "./ui/sfml/*.cpp",
                 "./ui/sfml/objects/*.cpp",
+                "./ui/sfml/objects/base-objects/*.cpp",
                 "./types/basic/*",
                 "./types/enums/*",
 
