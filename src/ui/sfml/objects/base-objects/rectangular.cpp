@@ -19,5 +19,9 @@ namespace Ui
         void RectangularComponent::SetOutlineColor(Color color)
         {
         }
+        void RectangularComponent::Move(Movement move)
+        {
+            this->mShape->move(move.x, move.y);
+        }
     }
 }

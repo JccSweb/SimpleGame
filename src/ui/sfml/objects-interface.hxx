@@ -14,11 +14,10 @@ namespace Ui
         {
         public:
             IBaseComponent();
-
-            void Move(Movement move);
             virtual std::shared_ptr<sf::Drawable> GetElement() = 0;
             virtual void SetFillColor(Color color) = 0;
             virtual void SetOutlineColor(Color color) = 0;
+            virtual void Move(Movement move) = 0;
         };
 
         class ComponentConstrutor

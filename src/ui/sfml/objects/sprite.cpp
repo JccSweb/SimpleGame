@@ -18,5 +18,9 @@ namespace Ui
         void SpriteComponent::SetOutlineColor(Color color)
         {
         }
+        void SpriteComponent::Move(Movement move)
+        {
+            this->mShape->move(move.x, move.y);
+        }
     }
 }

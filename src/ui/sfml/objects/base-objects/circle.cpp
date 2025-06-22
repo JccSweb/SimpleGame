@@ -19,5 +19,9 @@ namespace Ui
         void CircleComponent::SetOutlineColor(Color color)
         {
         }
+        void CircleComponent::Move(Movement move)
+        {
+            this->mShape->move(move.x, move.y);
+        }
     }
 }
