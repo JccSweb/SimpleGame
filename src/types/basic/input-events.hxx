@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INPUT_EVENT_TYPES_HXX
+#define INPUT_EVENT_TYPES_HXX
 
 enum EventInputTypeEnum
 {
@@ -23,3 +24,5 @@ struct InputTypeEvent
     bool shift = false;
     bool system = false;
 };
+
+#endif
