@@ -18,6 +18,7 @@ namespace Ui
             virtual void SetFillColor(Color color) = 0;
             virtual void SetOutlineColor(Color color) = 0;
             virtual void Move(Movement move) = 0;
+            virtual void SetRadius(float rad) = 0;
         };
 
         class ComponentConstrutor

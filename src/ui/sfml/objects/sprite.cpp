@@ -22,5 +22,9 @@ namespace Ui
         {
             this->mShape->move(move.x, move.y);
         }
+        void SpriteComponent::SetRadius(float rad)
+        {
+            
+        }
     }
 }

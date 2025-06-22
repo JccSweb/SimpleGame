@@ -23,5 +23,9 @@ namespace Ui
         {
             this->mShape->move(move.x, move.y);
         }
+        void CircleComponent::SetRadius(float rad)
+        {
+            this->mShape->setRadius(rad);
+        }
     }
 }

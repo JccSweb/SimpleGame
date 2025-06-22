@@ -13,6 +13,7 @@ namespace Ui
             void SetFillColor(Color color);
             void SetOutlineColor(Color color);
             void Move(Movement move);
+            void SetRadius(float rad);
         private:
             std::shared_ptr<sf::CircleShape> mShape;
         };
