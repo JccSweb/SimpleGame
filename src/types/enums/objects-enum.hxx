@@ -8,7 +8,7 @@ namespace Ui
         {
             Circle,
             Rect,
-            Texture
+            Sprite
         };
     }
 }
