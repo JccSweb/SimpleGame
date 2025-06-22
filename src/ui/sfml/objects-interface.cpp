@@ -1,6 +1,7 @@
 #include <memory>
 #include "objects-interface.hxx"
-#include "ui/sfml/objects/circle.hxx"
+#include "ui/sfml/objects/base-objects/circle.hxx"
+#include "ui/sfml/objects/base-objects/rectangular.hxx"
 
 namespace Ui
 {
@@ -8,21 +9,25 @@ namespace Ui
     {
         IBaseComponent::IBaseComponent()
         {
-
         }
-
-        std::shared_ptr<sf::Shape> IBaseComponent::GetElement()
-        {
-            return this->mShape;
-        }
-
+        
         std::shared_ptr<IBaseComponent> ComponentConstrutor::GetInstance(shapesEnum value)
         {
-            if(value == shapesEnum::Circle)
+            std::shared_ptr<IBaseComponent> component = nullptr;
+
+            if (value == shapesEnum::Circle)
             {
-                return std::make_shared<CircleComponent>();
+                component = std::make_shared<CircleComponent>();
             }
-            return std::make_shared<CircleComponent>();
+            else if (value == shapesEnum::Rect)
+            {
+                component = std::make_shared<RectangularComponent>();
+            }
+            else if (value == shapesEnum::Sprite)
+            {
+                component = std::make_shared<RectangularComponent>();
+            }
+            return component;
         }
     }
 }

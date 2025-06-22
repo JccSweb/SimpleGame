@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 
 #include "types/enums/objects-enum.hxx"
+#include "types/basic/movement.hxx"
+#include "types/basic/color.hxx"
 
 namespace Ui
 {
@@ -12,10 +14,11 @@ namespace Ui
         {
         public:
             IBaseComponent();
-            std::shared_ptr<sf::Shape> GetElement();
 
-        protected:
-            std::shared_ptr<sf::Shape> mShape;
+            void Move(Movement move);
+            virtual std::shared_ptr<sf::Drawable> GetElement() = 0;
+            virtual void SetFillColor(Color color) = 0;
+            virtual void SetOutlineColor(Color color) = 0;
         };
 
         class ComponentConstrutor

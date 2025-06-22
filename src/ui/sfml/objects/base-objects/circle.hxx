@@ -9,6 +9,11 @@ namespace Ui
         {
         public:
             CircleComponent();
+            std::shared_ptr<sf::Drawable> GetElement();
+            void SetFillColor(Color color);
+            void SetOutlineColor(Color color);
+        private:
+            std::shared_ptr<sf::CircleShape> mShape;
         };
     }
 }
