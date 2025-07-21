@@ -17,19 +17,19 @@ namespace Game
     class IUiSubject
     {
     public:
-        virtual void Attach(std::shared_ptr<IGameObserver> observer) = 0;
-        virtual void Detach(std::shared_ptr<IGameObserver> observer) = 0;
+        virtual void Attach(const std::shared_ptr<IGameObserver>& observer) = 0;
+        virtual void Detach(const std::shared_ptr<IGameObserver>& observer) = 0;
         // Struct or something to be passed, should garantee decoupling
-        virtual void Notify(InputTypeEvent event) = 0;
+        virtual void Notify(const InputTypeEvent& event) = 0;
     };
 
     class UiSubject : public IUiSubject
     {
     public:
         static std::shared_ptr<UiSubject> GetInstance();
-        void Attach(std::shared_ptr<IGameObserver> observer);
-        void Detach(std::shared_ptr<IGameObserver> observer);
-        void Notify(InputTypeEvent event);
+        void Attach(const std::shared_ptr<IGameObserver>& observer);
+        void Detach(const std::shared_ptr<IGameObserver>& observer);
+        void Notify(const InputTypeEvent& event);
 
     protected:
         UiSubject();

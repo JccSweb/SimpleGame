@@ -13,19 +13,27 @@ namespace Ui
         {
             return this->mShape;
         }
-        void CircleComponent::SetFillColor(Color color)
+        void CircleComponent::SetFillColor(const Color& color)
         {
         }
-        void CircleComponent::SetOutlineColor(Color color)
+        void CircleComponent::SetOutlineColor(const Color& color)
         {
         }
-        void CircleComponent::Move(Movement move)
+        void CircleComponent::Move(const Movement& move)
         {
             this->mShape->move(move.x, move.y);
         }
         void CircleComponent::SetRadius(float rad)
         {
             this->mShape->setRadius(rad);
+        }
+        Movement CircleComponent::GetPosition()
+        {
+            Movement move;
+            sf::Vector2f vect = this->mShape->getPosition();
+            move.x = vect.x;
+            move.y = vect.y;
+            return move;
         }
     }
 }

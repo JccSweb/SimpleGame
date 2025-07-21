@@ -10,8 +10,9 @@ namespace World
     {
     public:
         static std::shared_ptr<WorldState> GetInstance();
-        void ReceiveEvents(InputTypeEvent event);
+        void ReceiveEvents(const InputTypeEvent& event);
         std::map<std::string, std::shared_ptr<Ui::Components::IBaseComponent>> GetElements();
+        void InitDefaults();
 
     protected:
         static std::mutex mMutex;
@@ -21,5 +22,6 @@ namespace World
     private:
         std::shared_ptr<Game::Elements::Characters::ICharacters> MainCharacter;
         std::map<std::string, std::shared_ptr<Ui::Components::IBaseComponent>> mObjects;
+        void InsertElement(const std::string& name, std::shared_ptr<Ui::Components::IBaseComponent> element);
     };
 }

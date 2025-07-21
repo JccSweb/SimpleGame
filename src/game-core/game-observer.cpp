@@ -9,19 +9,19 @@ namespace Game
     {
     }
     
-    void UiSubject::Attach(std::shared_ptr<IGameObserver> observer)
+    void UiSubject::Attach(const std::shared_ptr<IGameObserver>& observer)
     {
         std::lock_guard<std::mutex> lock(mMutex);
         this->list_observer_.push_back(observer);
     }
 
-    void UiSubject::Detach(std::shared_ptr<IGameObserver> observer)
+    void UiSubject::Detach(const std::shared_ptr<IGameObserver>& observer)
     {
         std::lock_guard<std::mutex> lock(mMutex);
         this->list_observer_.remove(observer);
     }
 
-    void UiSubject::Notify(InputTypeEvent event)
+    void UiSubject::Notify(const InputTypeEvent& event)
     {
         for (auto observer : this->list_observer_)
         {

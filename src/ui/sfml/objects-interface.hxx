@@ -15,16 +15,17 @@ namespace Ui
         public:
             IBaseComponent();
             virtual std::shared_ptr<sf::Drawable> GetElement() = 0;
-            virtual void SetFillColor(Color color) = 0;
-            virtual void SetOutlineColor(Color color) = 0;
-            virtual void Move(Movement move) = 0;
+            virtual void SetFillColor(const Color& color) = 0;
+            virtual void SetOutlineColor(const Color& color) = 0;
+            virtual void Move(const Movement& move) = 0;
             virtual void SetRadius(float rad) = 0;
+            virtual Movement GetPosition() = 0;
         };
 
         class ComponentConstrutor
         {
         public:
-            static std::shared_ptr<IBaseComponent> GetInstance(shapesEnum value);
+            static std::shared_ptr<IBaseComponent> GetInstance(ShapesEnum value);
         };
     }
 }

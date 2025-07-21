@@ -31,8 +31,8 @@ namespace Ui
             std::shared_ptr<World::WorldState> state;
             std::shared_ptr<Game::UiSubject> subject;
 
-            void Draw(std::shared_ptr<Components::IBaseComponent> imageShape);
-            void ProcessEvents(std::shared_ptr<Game::UiSubject> subject);
+            void Draw(const std::shared_ptr<Components::IBaseComponent>& imageShape);
+            void ProcessEvents(const std::shared_ptr<Game::UiSubject>& subject);
             InputTypeEvent ParseKeyPressedEvent(sf::Event event);
         };
     }
