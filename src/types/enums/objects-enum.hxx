@@ -5,11 +5,11 @@ namespace Ui
 {
     namespace Components
     {
-        enum shapesEnum
+        enum class ShapesEnum
         {
-            Circle,
-            Rect,
-            Sprite
+            circle,
+            rect,
+            sprite
         };
     }
 }

@@ -11,19 +11,19 @@ namespace Ui
         {
         }
         
-        std::shared_ptr<IBaseComponent> ComponentConstrutor::GetInstance(shapesEnum value)
+        std::shared_ptr<IBaseComponent> ComponentConstrutor::GetInstance(ShapesEnum value)
         {
             std::shared_ptr<IBaseComponent> component = nullptr;
 
-            if (value == shapesEnum::Circle)
+            if (value == ShapesEnum::circle)
             {
                 component = std::make_shared<CircleComponent>();
             }
-            else if (value == shapesEnum::Rect)
+            else if (value == ShapesEnum::rect)
             {
                 component = std::make_shared<RectangularComponent>();
             }
-            else if (value == shapesEnum::Sprite)
+            else if (value == ShapesEnum::sprite)
             {
                 component = std::make_shared<RectangularComponent>();
             }

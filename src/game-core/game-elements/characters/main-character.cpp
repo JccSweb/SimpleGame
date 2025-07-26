@@ -10,7 +10,7 @@ namespace Game
         {
             MainCharacter::MainCharacter()
             {
-                this->mComponentRepresentation = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::Circle);
+                this->mComponentRepresentation = Ui::Components::ComponentConstrutor::GetInstance(Ui::Components::ShapesEnum::circle);
                 this->SetCharacteristics();
             }
 

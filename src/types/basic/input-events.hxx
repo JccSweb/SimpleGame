@@ -9,10 +9,10 @@ enum EventInputTypeEnum
 
 enum EventKeyboardTypeEnum
 {
-    Right,
-    Left,
-    Up,
-    Down
+    right,
+    left,
+    up,
+    down
 };
 
 struct InputTypeEvent

@@ -3,10 +3,10 @@
 
 namespace Game
 {
-    enum GameStates
+    enum class GameStates
     {
-        Running,
-        Shutdonw
+        running,
+        shutdonw
     };
 }
 
