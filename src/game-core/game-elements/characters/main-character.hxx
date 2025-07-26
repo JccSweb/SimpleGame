@@ -11,6 +11,8 @@ namespace Game
             {
             public:
                 MainCharacter();
+                void SetCharacteristics() override;
+               
             };
         }
     }

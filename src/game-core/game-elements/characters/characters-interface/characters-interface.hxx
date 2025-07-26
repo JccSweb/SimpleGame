@@ -11,8 +11,15 @@ namespace Game
         {
             class ICharacters : public Elements::IBaseElements
             {
-                public:
+            public:
                 ICharacters();
+                std::shared_ptr<Ui::Components::IBaseComponent> GetElementRepresentation() override;
+                std::string GetName() override;
+                void Move(const Movement &move) override;
+                void GetElementPosition() override;
+                const double GetElementSpeed() override;
+                void SetElementSpeed(double newSpeed) override;
+                void SetCharacteristics() override;               
             };
         }
     }
