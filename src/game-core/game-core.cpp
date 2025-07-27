@@ -40,6 +40,8 @@ namespace Game
         std::shared_ptr<Game::UiSubject> subject = Game::UiSubject::GetInstance();
         std::shared_ptr<Game::GameObserver> observer = Game::GameObserver::Create(subject); 
         auto worldState = World::WorldState::GetInstance();
+        worldState->InitDefaults();
+        worldState->LoadLevel();
 
         while (this->mGameController->GetStatus())
         {

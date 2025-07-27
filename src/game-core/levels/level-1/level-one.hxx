@@ -8,8 +8,10 @@ namespace Game
     {
         class LevelOne : public ILevelInterface
         {
-            public:
+        public:
             LevelOne();
+            std::vector<std::shared_ptr<Game::Elements::IBaseElements>> GetElements() override;
         };
+
     }
 }

@@ -1,11 +1,11 @@
 #include "game-core/world-state/world-state.hxx"
 #include "types/basic/movement.hxx"
-
+#include "game-core/levels/level-1/level-one.hxx"
 #include <iostream>
 
 namespace World
 {
-
+   
     std::mutex WorldState::mMutex;
     std::shared_ptr<WorldState> WorldState::mInstance;
 
@@ -19,28 +19,40 @@ namespace World
         return mInstance;
     }
 
+    void WorldState::ProcessCharacterMoveEvents(const InputTypeEvent& event)
+    {
+        this->MainCharacter->GetElementPosition();
+
+        Movement move;   
+        if (event.keypressed == EventKeyboardTypeEnum::right)
+        {
+            move.x = this->MainCharacter->GetElementSpeed();
+        }
+        if (event.keypressed == EventKeyboardTypeEnum::left)
+        {
+            move.x = -this->MainCharacter->GetElementSpeed();
+        }
+        if (event.keypressed == EventKeyboardTypeEnum::up)
+        {
+            move.y = -this->MainCharacter->GetElementSpeed();
+        }
+        if (event.keypressed == EventKeyboardTypeEnum::down)
+        {
+            move.y = this->MainCharacter->GetElementSpeed();
+        }
+        this->MainCharacter->Move(move);
+    }
+
     void WorldState::ReceiveEvents(const InputTypeEvent& event)
     {
-        std::cout << event.keypressed << std::endl;
-        Movement move;   
-        if (event.keypressed == EventKeyboardTypeEnum::Right)
-        {
-            move.x = 2.0;
-        }
-        if (event.keypressed == EventKeyboardTypeEnum::Left)
-        {
-            move.x = -2.0;
-        }
-        if (event.keypressed == EventKeyboardTypeEnum::Up)
-        {
-            move.y = -2.0;
-        }
-        if (event.keypressed == EventKeyboardTypeEnum::Down)
-        {
-            move.y = 2.0;
-        }
-        this->MainCharacter->GetElementPosition();
-        this->MainCharacter->Move(move);
+
+        //O que sabemos:
+        //Veio um evento:
+        //Esse evento é de movimento, logo é para a persongem.
+        //A personagem é que deverá ter uma velocidade.
+        //Mas quem sabe se a personagem pode ir na direcção é o mundo -> que irá calcular com base no motor de colisão.
+
+        this->ProcessCharacterMoveEvents(event);
     }
 
     void WorldState::InsertElement(const std::string& name, std::shared_ptr<Ui::Components::IBaseComponent> element )
@@ -63,5 +75,18 @@ namespace World
     void WorldState::InitDefaults()
     {
         this->InsertElement(this->MainCharacter->GetName(), this->MainCharacter->GetElementRepresentation());
+    }
+
+    void WorldState::LoadLevel()//const std::shared_ptr<Game::Level::ILevelInterface>& level)
+    {
+        //harcoded level 1 for now
+        
+        auto factory = Game::Level::LevelFactory();
+        std::string level = "level1";
+        this->mLevel = factory.GetLevel(level);
+        for (const auto& element : this->mLevel->GetElements())
+        {
+            this->InsertElement(element->GetName(), element->GetElementRepresentation());
+        }
     }
 }
