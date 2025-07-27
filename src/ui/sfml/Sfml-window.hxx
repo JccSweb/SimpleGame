@@ -27,9 +27,12 @@ namespace Ui
             static std::mutex mMutex;
             static std::shared_ptr<SfmlWindow> mInstance;
             
-            std::unique_ptr<sf::RenderWindow> window;
-            std::shared_ptr<World::WorldState> state;
-            std::shared_ptr<Game::UiSubject> subject;
+            std::unique_ptr<sf::RenderWindow> mWindow;
+            sf::View mView;
+            
+            std::shared_ptr<World::WorldState> mState;
+            std::shared_ptr<Game::UiSubject> mSubject;
+            
 
             void Draw(const std::shared_ptr<Components::IBaseComponent>& imageShape);
             void ProcessEvents(const std::shared_ptr<Game::UiSubject>& subject);
