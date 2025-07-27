@@ -28,10 +28,17 @@ namespace Ui
         Movement SpriteComponent::GetPosition()
         {
             Movement move;
-            sf::Vector2f vect = this->mShape->getPosition();
+            sf::Vector2f vect = this->GetPositionBySfVector();
             move.x = vect.x;
             move.y = vect.y;
             return move;
+        }
+        sf::Vector2f SpriteComponent::GetPositionBySfVector()
+        {
+            return this->mShape->getPosition();
+        }
+        void SpriteComponent::SetSize(Width width, Height height)
+        {
         }
     }
 }

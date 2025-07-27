@@ -30,10 +30,18 @@ namespace Ui
         Movement CircleComponent::GetPosition()
         {
             Movement move;
-            sf::Vector2f vect = this->mShape->getPosition();
+            sf::Vector2f vect = this->GetPositionBySfVector();
             move.x = vect.x;
             move.y = vect.y;
             return move;
+        }
+        sf::Vector2f CircleComponent::GetPositionBySfVector()
+        {
+            return this->mShape->getPosition();
+        }
+        void CircleComponent::SetSize(Width width, Height height)
+        {
+            
         }
     }
 }

@@ -15,6 +15,8 @@ namespace Ui
         }
         void RectangularComponent::SetFillColor(const Color& color)
         {
+            sf::Color convert(color.red, color.green, color.blue, color.alpha);
+            this->mShape->setFillColor(convert);
         }
         void RectangularComponent::SetOutlineColor(const Color& color)
         {
@@ -29,10 +31,19 @@ namespace Ui
         Movement RectangularComponent::GetPosition()
         {
             Movement move;
-            sf::Vector2f vect = this->mShape->getPosition();
+            sf::Vector2f vect = this->GetPositionBySfVector();
             move.x = vect.x;
             move.y = vect.y;
             return move;
+        }
+        sf::Vector2f RectangularComponent::GetPositionBySfVector()
+        {
+            return this->mShape->getPosition();
+        }
+
+        void RectangularComponent::SetSize(Width width, Height height)
+        {
+            this->mShape->setSize(sf::Vector2f(width, height));
         }
     }
 }

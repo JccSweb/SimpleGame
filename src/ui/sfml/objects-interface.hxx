@@ -5,6 +5,8 @@
 #include "types/enums/objects-enum.hxx"
 #include "types/basic/movement.hxx"
 #include "types/basic/color.hxx"
+#include "types/basic/type-definitions.hxx"
+
 
 namespace Ui
 {
@@ -19,7 +21,9 @@ namespace Ui
             virtual void SetOutlineColor(const Color& color) = 0;
             virtual void Move(const Movement& move) = 0;
             virtual void SetRadius(float rad) = 0;
+            virtual void SetSize(Width width, Height height) = 0;
             virtual Movement GetPosition() = 0;
+            virtual sf::Vector2f GetPositionBySfVector() = 0;
         };
 
         class ComponentConstrutor
