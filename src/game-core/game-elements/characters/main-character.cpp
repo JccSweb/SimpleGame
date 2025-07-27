@@ -23,6 +23,7 @@ namespace Game
                 color.red = 255;
                 this->mComponentRepresentation->SetFillColor(color);
                 this->mComponentRepresentation->SetRadius(20.0f);
+                this->SetElementSpeed(10);
             }
         }
     }

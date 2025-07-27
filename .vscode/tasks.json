@@ -21,15 +21,18 @@
                 "./types/enums/*",
 
                 "./game-core/*.cpp",
-                "./game-core/command/receiver/*.cpp",
-                "./game-core/command/command-interface/*.cpp",
-
                 "./game-core/game-elements/base-game-elements-interface/*.cpp",
                 "./game-core/game-elements/characters/*.cpp",
                 "./game-core/game-elements/characters/characters-interface/*.cpp",
-                "./game-core/game-elements/objects/objects-interface/*.cpp",            
+                "./game-core/game-elements/objects/objects-interface/*.cpp",      
+                "./game-core/game-elements/objects/blockers/base/*.cpp",       
+                "./game-core/game-elements/objects/ground/base/*.cpp",     
+                "./game-core/game-elements/objects/ground/*.cpp",     
+                "./game-core/levels/levels-interface/*.cpp",  
+                "./game-core/levels/level-1/*.cpp",     
+                "./game-core/world-state/*.cpp",     
                 
-                "./game-core/world-state/*.cpp",         
+                
                 
                 "-I./",
                 "-lsfml-graphics",
