@@ -36,8 +36,6 @@ namespace Game
             {
                 this->mBaseSpeed = newSpeed;
             }
-
-
             void IObjects::SetCharacteristics()
             {
                 
